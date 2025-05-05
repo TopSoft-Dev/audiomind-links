@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Otwieranie audiobooka</title>
+    <title>Opening audiobook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
-        background-color: #2e2e2e; /* ciemnoszare tło */
+        background-color: #2e2e2e; /* dark gray background */
         color: white;
         font-family: 'Segoe UI', sans-serif;
         display: flex;
@@ -19,7 +19,7 @@
         text-align: center;
       }
       .card {
-        background-color: #1db954; /* zielony jak Spotify */
+        background-color: #1db954; /* Spotify green */
         padding: 30px;
         border-radius: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -42,22 +42,22 @@
 
       const link = `audiomind://play?title=${encodeURIComponent(title)}&timestamp=${timestamp}`;
 
-      // Przekierowanie do aplikacji po 100ms
+      // Redirect to app after 100ms
       setTimeout(() => {
         window.location.href = link;
       }, 100);
 
-      // Pokazanie komunikatu po 2 sekundach
+      // Show close message after 2 seconds
       setTimeout(() => {
         const info = document.getElementById("close-info");
         info.style.opacity = 1;
-      }, 2000);
+      }, 1000);
     </script>
   </head>
   <body>
     <div class="card">
-      <p>Otwieranie audiobooka...</p>
+      <p>Opening your audiobook...</p>
     </div>
-    <div id="close-info">Możesz już wrócić do komunikatora ✌️</div>
+    <div id="close-info">You can now close this page ✌️</div>
   </body>
 </html>
