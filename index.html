@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Otwieranie audiobooka</title>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get("title");
+      const timestamp = params.get("timestamp");
+
+      const link = `audiomind://play?title=${encodeURIComponent(title)}&timestamp=${timestamp}`;
+
+      setTimeout(() => {
+        window.location.href = link;
+      }, 100);
+    </script>
+  </head>
+  <body>
+    <p>Otwieranie audiobooka...</p>
+  </body>
+</html>
