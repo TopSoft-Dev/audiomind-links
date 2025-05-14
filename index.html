@@ -39,34 +39,19 @@
       const params = new URLSearchParams(window.location.search);
       const title = params.get("title");
       const timestamp = params.get("timestamp");
-      const bookmarkName = params.get("bookmarkName"); // Odczytaj bookmarkName
 
-      // Zbuduj podstawowy link
-      let link = `audiomind://play?title=${encodeURIComponent(title || '')}&timestamp=${encodeURIComponent(timestamp || '')}`;
+      const link = `audiomind://play?title=${encodeURIComponent(title)}&timestamp=${timestamp}`;
 
-      // Jeśli bookmarkName istnieje i nie jest pusty, dodaj go do linku
-      if (bookmarkName) {
-        link += `&bookmarkName=${encodeURIComponent(bookmarkName)}`;
-      }
-
-      // Przekieruj do aplikacji po 100ms
+      // Redirect to app after 100ms
       setTimeout(() => {
-        if (title && timestamp) { // Przekieruj tylko jeśli mamy przynajmniej tytuł i timestamp
-            window.location.href = link;
-        } else {
-            // Opcjonalnie: obsłuż brakujące parametry, np. wyświetl błąd na stronie
-            console.error("Missing title or timestamp in URL params for app redirect.");
-            document.querySelector('.card p').textContent = 'Error: Missing link parameters.';
-        }
+        window.location.href = link;
       }, 100);
 
-      // Pokaż wiadomość o zamknięciu strony po określonym czasie
+      // Show close message after 2 seconds
       setTimeout(() => {
         const info = document.getElementById("close-info");
-        if (info) { // Sprawdź, czy element istnieje
-            info.style.opacity = 1;
-        }
-      }, 1000); // Czas może wymagać dostosowania
+        info.style.opacity = 1;
+      }, 1000);
     </script>
   </head>
   <body>
